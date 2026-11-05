@@ -1,60 +1,73 @@
-import './style.css'
-import heroImg from './assets/hero.png'
-import javascriptLogo from './assets/javascript.svg'
-import viteLogo from './assets/vite.svg'
-import { setupCounter } from './counter.js'
 
-document.querySelector('#app').innerHTML = `
-<section id="center">
-  <div class="hero">
-    <img src="${heroImg}" class="base" width="170" height="179">
-    <img src="${javascriptLogo}" class="framework" alt="JavaScript logo"/>
-    <img src="${viteLogo}" class="vite" alt="Vite logo" />
-  </div>
-  <div>
-    <h1>Get started</h1>
-    <p>Edit <code>src/main.js</code> and save to test <code>HMR</code></p>
-  </div>
-  <button id="counter" type="button" class="counter"></button>
-</section>
+import './styles/main.scss'
 
-<div class="ticks"></div>
+const app = document.querySelector('#app')
 
-<section id="next-steps">
-  <div id="docs">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#documentation-icon"></use></svg>
-    <h2>Documentation</h2>
-    <p>Your questions, answered</p>
-    <ul>
-      <li>
-        <a href="https://vite.dev/" target="_blank">
-          <img class="logo" src="${viteLogo}" alt="" />
-          Explore Vite
+if (!app) {
+  throw new Error('App root element not found')
+}
+
+app.innerHTML = `
+  <header class="header">
+    <a class="logo" href="#">
+      PARADISE <span>CORE 89</span>
+    </a>
+
+    <nav aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#departments">Departments</a>
+      <a href="#access">Access</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="about">
+      <div class="hero__content">
+        <p class="eyebrow">PARADISE / CORE 89</p>
+        <h1>
+          A MODULAR<br />
+          MANAGEMENT<br />
+          <span>PLATFORM.</span>
+        </h1>
+        <p class="description">
+          A unified entry point for independent
+          departments, secure operations and
+          coordinated business processes.
+        </p>
+        <a class="button" href="#departments">
+          Explore platform
         </a>
-      </li>
-      <li>
-        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-          <img class="button-icon" src="${javascriptLogo}" alt="">
-          Learn more
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div id="social">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#social-icon"></use></svg>
-    <h2>Connect with us</h2>
-    <p>Join the Vite community</p>
-    <ul>
-      <li><a href="https://github.com/vitejs/vite" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#github-icon"></use></svg>GitHub</a></li>
-      <li><a href="https://chat.vite.dev/" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#discord-icon"></use></svg>Discord</a></li>
-      <li><a href="https://x.com/vite_js" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#x-icon"></use></svg>X.com</a></li>
-      <li><a href="https://bsky.app/profile/vite.dev" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#bluesky-icon"></use></svg>Bluesky</a></li>
-    </ul>
-  </div>
-</section>
+      </div>
+    </section>
 
-<div class="ticks"></div>
-<section id="spacer"></section>
+    <section class="departments" id="departments">
+      <h2>Initial departments</h2>
+
+      <div class="department-grid">
+        <article class="department-card">
+          <span>01 / LOGISTICS</span>
+          <h3>Logistics</h3>
+          <p>Fleet, orders and shipments.</p>
+        </article>
+
+        <article class="department-card">
+          <span>02 / MEDICAL</span>
+          <h3>Medical</h3>
+          <p>Patients, visits and scheduling.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="access" id="access">
+      <h2>Authorized access</h2>
+      <p>
+        Registration and department access
+        will be implemented in the authentication phase.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    PARADISE CORE 89 / DEVELOPMENT BUILD
+  </footer>
 `
-
-setupCounter(document.querySelector('#counter'))
