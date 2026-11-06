@@ -1,0 +1,173 @@
+
+$background: #080f1c;
+$surface: #121e30;
+$text: #eaf0f7;
+$muted: #91a2b8;
+$accent: #c7a96b;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: $background;
+  color: $text;
+  font-family: Arial, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 28px 8%;
+  border-bottom: 1px solid #24334a;
+
+  .logo {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 2px;
+
+    span {
+      color: $accent;
+    }
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+
+    a {
+      color: $muted;
+
+      &:hover {
+        color: $accent;
+      }
+    }
+  }
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  min-height: 70vh;
+  padding: 80px 8%;
+  background: radial-gradient(
+    circle at 75% 45%,
+    #1d304b,
+    $background 65%
+  );
+
+  &__content {
+    max-width: 760px;
+  }
+
+  h1 {
+    font-size: clamp(42px, 6vw, 84px);
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin: 20px 0;
+
+    span {
+      color: $accent;
+    }
+  }
+}
+
+.eyebrow {
+  color: $accent;
+  letter-spacing: 4px;
+  font-size: 12px;
+}
+
+.description {
+  max-width: 490px;
+  line-height: 1.8;
+  color: $muted;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 16px 28px;
+  background: $accent;
+  color: $background;
+  font-weight: 700;
+  border-radius: 4px;
+
+  &:hover {
+    background: #e0c38a;
+  }
+}
+
+.departments,
+.access {
+  padding: 70px 8%;
+
+  h2 {
+    margin-bottom: 30px;
+  }
+}
+
+.department-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.department-card {
+  background: $surface;
+  padding: 36px;
+  border: 1px solid #273950;
+  border-radius: 8px;
+
+  span {
+    color: $accent;
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+
+  p {
+    color: $muted;
+  }
+}
+
+.access p {
+  color: $muted;
+  line-height: 1.7;
+}
+
+.footer {
+  padding: 30px 8%;
+  border-top: 1px solid #24334a;
+  color: $muted;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero {
+    min-height: 60vh;
+    padding-top: 60px;
+  }
+
+  .department-grid {
+    grid-template-columns: 1fr;
+  }
+}
