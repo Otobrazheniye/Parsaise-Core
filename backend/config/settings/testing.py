@@ -7,3 +7,10 @@ ALLOWED_HOSTS = [
     "testserver",
     "localhost",
 ]
+
+# Unit tests only: no real database connection.
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.dummy",
+    }
+}
