@@ -12,5 +12,6 @@ ALLOWED_HOSTS = [
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.dummy",
+    # Здесь dummy специальный backend, который не выполняет реальные операции с базой.
     }
 }
