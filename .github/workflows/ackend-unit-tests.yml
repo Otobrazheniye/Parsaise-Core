@@ -1,0 +1,48 @@
+
+name: Backend Unit Tests
+
+on:
+  push:
+    branches:
+      - develop
+      - "feature/**"
+
+  pull_request:
+    branches:
+      - develop
+      - main
+
+jobs:
+  django-unit-tests:
+    runs-on: ubuntu-latest
+
+    env:
+      DJANGO_SECRET_KEY: ci-only-temporary-secret-key-for-unit-tests-123456
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        working-directory: backend
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Django system check
+        working-directory: backend
+        run: |
+          python manage.py check \
+            --settings=config.settings.testing
+
+      - name: Run unit tests
+        working-directory: backend
+        run: |
+          python manage.py test accounts \
+            --settings=config.settings.testing \
+            -v 2
