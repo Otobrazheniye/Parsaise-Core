@@ -1,4 +1,3 @@
-
 name: Backend Unit Tests
 
 on:
@@ -40,9 +39,10 @@ jobs:
           python manage.py check \
             --settings=config.settings.testing
 
+
       - name: Run unit tests
         working-directory: backend
         run: |
-          python manage.py test accounts \
+          python manage.py test accounts.tests \
             --settings=config.settings.testing \
             -v 2

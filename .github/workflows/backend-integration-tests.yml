@@ -70,3 +70,4 @@ jobs:
           python manage.py test accounts.test_integration \
             --settings=config.settings.integration \
             --noinput -v 2
+            
