@@ -12,6 +12,8 @@ env/
 # Environment variables
 .env
 .env.*
+!/.env.docker.example
+/.env.docker
 
 # Django
 db.sqlite3

@@ -1,0 +1,41 @@
+name: Docker Build Check
+
+on:
+  push:
+    branches:
+      - develop
+      - "feature/**"
+
+  pull_request:
+    branches:
+      - develop
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  docker-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prepare CI environment
+        run: |
+          cp .env.docker.example .env.docker
+
+      - name: Validate Docker Compose
+        run: |
+          docker compose config --quiet
+
+      - name: Build Django image
+        run: |
+          docker compose build backend
+
+      - name: Check Django inside container
+        run: |
+          docker compose run --rm --no-deps backend \
+            python manage.py check \
+            --settings=config.settings.docker
